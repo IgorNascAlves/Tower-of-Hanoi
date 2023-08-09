@@ -1,6 +1,12 @@
-# Tower-of-Hanoi
- 
+# Game
+
 ![image](https://github.com/IgorNascAlves/Tower-of-Hanoi/assets/26041581/0d4422ef-9aa9-4e5f-8265-cf912a2461aa)
+
+
+# Solver
+
+![Gravando_2023-08-09_080959_AdobeExpress](https://github.com/IgorNascAlves/Tower-of-Hanoi/assets/26041581/d73ff517-340d-4aaa-830b-e344da4c1540)
+
 
 # Tower of Hanoi Game
 
