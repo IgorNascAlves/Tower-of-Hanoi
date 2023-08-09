@@ -8,7 +8,7 @@ class TowerOfHanoi(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Tower of Hanoi")
         
-        self.num_discs = 5
+        self.num_discs = 7
         self.towers = [[], [], []]
         
         for i in range(self.num_discs, 0, -1):
