@@ -21,6 +21,17 @@ class TowerOfHanoi(arcade.Window):
         self.start_time = time.time()  # Initialize start_time here
 
         self.congrats_displayed = False  # Add this variable to track if congrats message is displayed
+
+        # Define colors for the discs
+        self.disc_colors = [
+            arcade.color.RED,
+            arcade.color.ORANGE,
+            arcade.color.YELLOW,
+            arcade.color.GREEN,
+            arcade.color.BLUE,
+            arcade.color.INDIGO,
+            arcade.color.VIOLET
+        ]
         
     def on_draw(self):
         arcade.start_render()
@@ -32,7 +43,13 @@ class TowerOfHanoi(arcade.Window):
             for j, disc in enumerate(tower):
                 disc_width = disc * 20
                 disc_height = 20
-                arcade.draw_rectangle_filled(x, y + j * disc_height, disc_width, disc_height, arcade.color.BLUE)
+                # arcade.draw_rectangle_filled(x, y + j * disc_height, disc_width, disc_height, arcade.color.BLUE)
+                
+                # Get the disc color based on its size
+                disc_color = self.disc_colors[disc - 1]  # -1 because list indices are 0-based
+
+                arcade.draw_rectangle_filled(x, y + j * disc_height, disc_width, disc_height, disc_color)
+
 
         if self.congrats_displayed:
             x = SCREEN_WIDTH // 2

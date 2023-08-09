@@ -25,7 +25,7 @@ def main():
     
     print("Press 'r' key to start the Tower of Hanoi game.")
     keyboard.wait("r")  # Wait for 'r' key press
-
+    
     tower_of_hanoi(num_discs, "1", "2", "3")
 
 if __name__ == "__main__":
