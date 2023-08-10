@@ -21,7 +21,7 @@ def tower_of_hanoi(n, source, auxiliary, destination):
 
 def main():
 
-    num_discs = 7  # Number of disks
+    num_discs = 5  # Number of disks
     
     print("Press 'r' key to start the Tower of Hanoi game.")
     keyboard.wait("r")  # Wait for 'r' key press
