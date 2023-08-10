@@ -38,6 +38,17 @@ class TowerOfHanoi(arcade.Window):
 
         self.selected_tower = None
 
+        # Define colors
+        self.rod_color = arcade.color.GRAY
+        self.rod_width = 10
+
+        # Initialize tower positions
+        self.tower_positions = [
+            SCREEN_WIDTH // 4,
+            SCREEN_WIDTH // 2,
+            3 * SCREEN_WIDTH // 4
+        ]
+
         
     def on_draw(self):
         arcade.start_render()
@@ -45,6 +56,13 @@ class TowerOfHanoi(arcade.Window):
         # Draw the number of discs
         arcade.draw_text(f"Number of Discs: {self.current_num_discs}", 10, SCREEN_HEIGHT - 30, arcade.color.WHITE, 18)
         
+        # Draw the rods
+        for x in self.tower_positions:
+            rod_height = self.num_discs * 20 + 5  # Adjust the multiplier and offset as needed
+            y = SCREEN_HEIGHT // 2 + rod_height // 2
+            arcade.draw_rectangle_filled(x, y, self.rod_width, rod_height, self.rod_color)
+
+
         for i, tower in enumerate(self.towers):
             x = (i + 1) * SCREEN_WIDTH // 4
             y = SCREEN_HEIGHT // 2
@@ -104,7 +122,7 @@ class TowerOfHanoi(arcade.Window):
             self.current_num_discs = max(self.current_num_discs - 1, 2)
             self.reset_game()
         
-         # Additional key options
+        # Additional key options
         if key == arcade.key.R:
             self.reset_game()
 
@@ -157,10 +175,6 @@ class TowerOfHanoi(arcade.Window):
         print("Game reset.")
                 
 def main():
-    # num_discs = int(input("Enter the number of discs (2-7): "))
-    # if num_discs < 2 or num_discs > 7:
-    #     print("Invalid number of discs. Please choose a number between 2 and 7.")
-    #     return
     num_discs = 7
     window = TowerOfHanoi(num_discs)
     arcade.run()
