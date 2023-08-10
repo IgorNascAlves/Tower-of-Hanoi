@@ -32,6 +32,9 @@ class TowerOfHanoi(arcade.Window):
             arcade.color.INDIGO,
             arcade.color.VIOLET
         ]
+
+        self.selected_tower = None
+
         
     def on_draw(self):
         arcade.start_render()
@@ -50,6 +53,16 @@ class TowerOfHanoi(arcade.Window):
 
                 arcade.draw_rectangle_filled(x, y + j * disc_height, disc_width, disc_height, disc_color)
 
+        if self.selected_tower is not None:
+            selected_tower = self.towers[self.selected_tower]
+            if selected_tower:
+                x = (self.selected_tower + 1) * SCREEN_WIDTH // 4
+                y = SCREEN_HEIGHT // 2
+                disc = selected_tower[-1]
+                disc_width = disc * 20
+                disc_height = 20
+                highlight_color = arcade.color.WHITE  # Change this to the desired highlight color
+                arcade.draw_rectangle_outline(x, y + (len(selected_tower) - 1) * disc_height, disc_width, disc_height, highlight_color, border_width=3)
 
         if self.congrats_displayed:
             x = SCREEN_WIDTH // 2
@@ -76,17 +89,29 @@ class TowerOfHanoi(arcade.Window):
         return False
     
     def on_key_press(self, key, modifiers):
+        
+         # Additional key options
+        if key == arcade.key.R:
+            self.reset_game()
+
         if key == arcade.key.Q:
             arcade.close_window()
+
         if key == arcade.key.W:
             self.congrats_displayed = True
             self.congrats_message = f"Congratulations!\n You solved the puzzle in {self.move_counter} moves\n and {0:.2f} seconds."
+
         if key in (arcade.key.KEY_1, arcade.key.KEY_2, arcade.key.KEY_3):
             tower_index = key - arcade.key.KEY_1
+
+            if self.selected_tower is None:
+                self.selected_tower = tower_index
+
             if self.source_tower is None:
                 self.source_tower = tower_index
             elif self.destination_tower is None:
                 self.destination_tower = tower_index
+
                 
                 if self.move_disc(self.source_tower, self.destination_tower):
                     print(f"Moved disc from tower {self.source_tower} to tower {self.destination_tower}")
@@ -101,10 +126,9 @@ class TowerOfHanoi(arcade.Window):
                     
                 self.source_tower = None
                 self.destination_tower = None
+                self.selected_tower = None
         
-        # Additional key options
-        if key == arcade.key.R:
-            self.reset_game()
+       
             
     def reset_game(self):
         self.towers = [[], [], []]
