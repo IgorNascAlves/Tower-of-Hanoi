@@ -1,16 +1,8 @@
-# Game
-
-![image](https://github.com/IgorNascAlves/Tower-of-Hanoi/assets/26041581/0d4422ef-9aa9-4e5f-8265-cf912a2461aa)
-
-
-# Solver
-
-![Gravando_2023-08-09_080959_AdobeExpress](https://github.com/IgorNascAlves/Tower-of-Hanoi/assets/26041581/d73ff517-340d-4aaa-830b-e344da4c1540)
-
-
 # Tower of Hanoi Game
 
 The Tower of Hanoi is a classic mathematical puzzle that involves moving a tower of disks from one rod to another, following certain rules. This Python program provides a graphical representation of the Tower of Hanoi puzzle and allows you to interactively solve it.
+
+<img src="https://github.com/IgorNascAlves/Tower-of-Hanoi/assets/26041581/c9c6c6f6-3623-47a9-b84d-2ae49617fbe5" alt="tower_hanoi" width="400" height="300">
 
 ## Table of Contents
 
