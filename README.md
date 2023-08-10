@@ -2,7 +2,7 @@
 
 The Tower of Hanoi is a classic mathematical puzzle that involves moving a tower of disks from one rod to another, following certain rules. This Python program provides a graphical representation of the Tower of Hanoi puzzle and allows you to interactively solve it.
 
-<img src="https://github.com/IgorNascAlves/Tower-of-Hanoi/assets/26041581/c9c6c6f6-3623-47a9-b84d-2ae49617fbe5" alt="tower_hanoi" width="400" height="300">
+<img src="https://github.com/IgorNascAlves/Tower-of-Hanoi/assets/26041581/01d4e938-4a54-4f27-a02e-381904fa178b" alt="tower_hanoi" width="798" height="434">
 
 ## Table of Contents
 
