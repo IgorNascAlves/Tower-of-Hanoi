@@ -5,11 +5,14 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 
 class TowerOfHanoi(arcade.Window):
-    def __init__(self):
+    def __init__(self, num_discs):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Tower of Hanoi")
         
-        self.num_discs = 7
+        self.num_discs = num_discs
         self.towers = [[], [], []]
+
+        self.current_num_discs = num_discs
+        self.max_num_discs = 7
         
         for i in range(self.num_discs, 0, -1):
             self.towers[0].append(i)
@@ -38,6 +41,9 @@ class TowerOfHanoi(arcade.Window):
         
     def on_draw(self):
         arcade.start_render()
+
+        # Draw the number of discs
+        arcade.draw_text(f"Number of Discs: {self.current_num_discs}", 10, SCREEN_HEIGHT - 30, arcade.color.WHITE, 18)
         
         for i, tower in enumerate(self.towers):
             x = (i + 1) * SCREEN_WIDTH // 4
@@ -89,6 +95,14 @@ class TowerOfHanoi(arcade.Window):
         return False
     
     def on_key_press(self, key, modifiers):
+
+        if key == arcade.key.UP:
+            self.current_num_discs = min(self.current_num_discs + 1, self.max_num_discs)
+            self.reset_game()
+
+        if key == arcade.key.DOWN:
+            self.current_num_discs = max(self.current_num_discs - 1, 2)
+            self.reset_game()
         
          # Additional key options
         if key == arcade.key.R:
@@ -131,6 +145,9 @@ class TowerOfHanoi(arcade.Window):
        
             
     def reset_game(self):
+        
+        self.num_discs = self.current_num_discs
+
         self.towers = [[], [], []]
         for i in range(self.num_discs, 0, -1):
             self.towers[0].append(i)
@@ -140,7 +157,12 @@ class TowerOfHanoi(arcade.Window):
         print("Game reset.")
                 
 def main():
-    window = TowerOfHanoi()
+    # num_discs = int(input("Enter the number of discs (2-7): "))
+    # if num_discs < 2 or num_discs > 7:
+    #     print("Invalid number of discs. Please choose a number between 2 and 7.")
+    #     return
+    num_discs = 7
+    window = TowerOfHanoi(num_discs)
     arcade.run()
 
 if __name__ == "__main__":
